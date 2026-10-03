@@ -56,7 +56,7 @@ Flujo de trabajo: crear rama `feature/` desde `develop` → Pull Request hacia `
 
 ## Gestión del proyecto
 
-El backlog completo, épicas, historias de usuario y sprints se gestionan en JIRA (proyecto "Gestión de Flotillas con IA", tipo Scrum).
+El backlog completo, épicas, historias de usuario y sprints se gestionan en JIRA: [Tablero del proyecto](https://correodepractica55.atlassian.net/jira/software/projects/SCRUM/boards/1) (proyecto "Gestión de Flotillas con IA", tipo Scrum).
 
 ## Entregables del semestre
 

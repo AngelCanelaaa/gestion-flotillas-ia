@@ -23,7 +23,7 @@ El sistema sigue una arquitectura de microservicios:
 - **ai-service** — Servicio de detección de fatiga del conductor (modelo MobileNetV2, reutilizado del proyecto de Visión por Computadora y Machine Learning), expuesto vía FastAPI.
 - **Redis Streams** — Mensajería asíncrona entre `ai-service` y `business-service`.
 
-El detalle completo del diseño (diagramas, modelo entidad-relación, modelo de documentos MongoDB y justificación de cada base de datos) está en [`docs/documento-vision.docx`](docs/documento-vision.docx).
+El detalle completo del diseño (diagramas, modelo entidad-relación, modelo de documentos MongoDB y justificación de cada base de datos) está en [`docs/Documento_Vision_Entregable1.pdf`](docs/Documento_Vision_Entregable1.pdf).
 
 ## Cómo levantar el proyecto localmente
 

@@ -1,3 +1,12 @@
-from django.shortcuts import render
+from rest_framework import mixins, viewsets
+from .models import Viaje
+from .serializers import ViajeSerializer
 
-# Create your views here.
+
+class ViajeViewSet(
+    mixins.CreateModelMixin,
+    viewsets.GenericViewSet,
+):
+    """Solo POST (crear)."""
+    queryset = Viaje.objects.all()
+    serializer_class = ViajeSerializer

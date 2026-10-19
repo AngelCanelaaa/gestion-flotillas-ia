@@ -1,5 +1,7 @@
 from rest_framework import serializers
+from .models import Incidente, IncidenteHistorial
 
+# --- Serializers de MongoDB (SCRUM-13) ---
 class DeteccionFatigaSerializer(serializers.Serializer):
     episodio_id = serializers.CharField(max_length=50)
     chofer_id = serializers.IntegerField()
@@ -13,3 +15,16 @@ class DeteccionFatigaSerializer(serializers.Serializer):
     truncado_por_duracion_maxima = serializers.BooleanField()
     muestras = serializers.ListField(child=serializers.DictField(), required=False, default=[])
     frame_referencia_url = serializers.CharField(allow_null=True, required=False, default=None)
+
+# --- Serializers de PostgreSQL (SCRUM-14) ---
+class IncidenteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Incidente
+        fields = '__all__'
+        read_only_fields = ['id', 'creado_en', 'actualizado_en']
+
+class IncidenteHistorialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IncidenteHistorial
+        fields = '__all__'
+        read_only_fields = ['id', 'fecha_cambio']

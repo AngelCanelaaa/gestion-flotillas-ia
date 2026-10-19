@@ -88,3 +88,6 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ]
 }
+
+MONGO_URI = config('MONGO_URI', default='mongodb://localhost:27017/')
+MONGO_DB_NAME = config('MONGO_DB_NAME', default='flotillas_mongo_db')

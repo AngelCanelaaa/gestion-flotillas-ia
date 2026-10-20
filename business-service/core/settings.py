@@ -7,11 +7,11 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-identity-service-local-dev'
+
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -23,7 +23,7 @@ INSTALLED_APPS = [
     # Terceros
     'rest_framework',
     'django_filters',
-    'drf_spectacular', # <-- NUEVO: Para Swagger
+    'drf_spectacular',
 
     # Apps locales
     'vehiculos',
@@ -38,7 +38,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -63,7 +63,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-# Database (PostgreSQL para flotillas_db)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -90,7 +89,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST Framework (con filtros para SCRUM-10 y Swagger para SCRUM-20)
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'core.authentication.MicroserviceJWTAuthentication',
@@ -104,6 +102,5 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
-# MongoDB (SCRUM-13)
 MONGO_URI = config('MONGO_URI', default='mongodb://localhost:27017/')
 MONGO_DB_NAME = config('MONGO_DB_NAME', default='flotillas_mongo_db')

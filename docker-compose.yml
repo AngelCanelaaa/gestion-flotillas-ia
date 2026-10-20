@@ -52,6 +52,17 @@ services:
       - MONGO_URI=mongodb://db_mongo:27017/
       - MONGO_DB_NAME=flotillas_mongo_db
 
+  api-gateway:
+    build: ./api-gateway
+    command: python manage.py runserver 0.0.0.0:8080
+    volumes:
+      - ./api-gateway:/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - business-service
+      - identity-service
+
 volumes:
   postgres_data:
   mongo_data:

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'viajes',
     'incidentes',
     'rutas',
+    'mantenimientos',
 ]
 
 MIDDLEWARE = [

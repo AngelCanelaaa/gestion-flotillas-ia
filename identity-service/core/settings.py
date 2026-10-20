@@ -3,6 +3,7 @@ Django settings for identity-service core project.
 """
 from pathlib import Path
 from decouple import config
+from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,6 +24,10 @@ INSTALLED_APPS = [
 
     # Terceros
     'rest_framework',
+
+    'drf_spectacular',
+
+    'rest_framework_simplejwt', 
 
     # Apps locales
     'usuarios',
@@ -86,11 +91,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # REST Framework
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication', # <-- Nueva línea
+    ),
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 # Modelo de usuario personalizado
 AUTH_USER_MODEL = 'usuarios.Usuario'
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), # El token dura 1 hora
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),    # El refresh dura 1 día
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}

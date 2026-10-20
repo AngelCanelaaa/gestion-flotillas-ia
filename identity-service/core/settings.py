@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     # Terceros
     'rest_framework',
 
+    'drf_spectacular',
+
     # Apps locales
     'usuarios',
 ]
@@ -89,7 +91,8 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # <-- Nueva línea
 }
 
 # Modelo de usuario personalizado

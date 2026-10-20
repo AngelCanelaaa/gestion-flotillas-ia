@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     # Terceros
     'rest_framework',
     'django_filters',
+    'drf_spectacular', # <-- NUEVO: Para Swagger
 
     # Apps locales
     'vehiculos',
@@ -90,11 +91,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST Framework (con filtros para SCRUM-10)
+# REST Framework (con filtros para SCRUM-10 y Swagger para SCRUM-20)
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # <-- NUEVO: Para Swagger
 }
 
 # MongoDB (SCRUM-13)
